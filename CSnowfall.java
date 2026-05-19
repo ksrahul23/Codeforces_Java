@@ -3,7 +3,6 @@ import java.util.*;
 public class CSnowfall {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        if (!sc.hasNextInt()) return;
         int t = sc.nextInt();
         while (t-- > 0) {
             int n = sc.nextInt();
@@ -20,7 +19,6 @@ public class CSnowfall {
             }
             
             StringBuilder sb = new StringBuilder();
-            // Try: 6s first, then 2s, then Neutrals (the wall), then 3s
             for (int x : d6) sb.append(x).append(" ");
             for (int x : d2) sb.append(x).append(" ");
             for (int x : net) sb.append(x).append(" ");

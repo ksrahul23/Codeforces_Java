@@ -12,7 +12,6 @@ public class AAWonderfulContest {
             
             for (int i = 0; i < n; i++) {
                 int a = sc.nextInt();
-                // Check if any problem allows for 1-point increments
                 if (a == 100) {
                     hasHundred = true;
                 }
