@@ -1,35 +1,72 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.StringTokenizer;
+import java.io.IOException;
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+public class kIsImp_2269 {
+    public static void main(String[] args) throws IOException {
+        FastScanner scanner = new FastScanner();
+        int t = scanner.nextInt();
+        
+        StringBuilder out = new StringBuilder();
         while (t-- > 0) {
-            int n = sc.nextInt();
-            int k = sc.nextInt();
+            int n = scanner.nextInt();
+            int k = scanner.nextInt();
+            
             long[] a = new long[n];
+            long[] prefix = new long[n + 1];
             long totalSum = 0;
+            
             for (int i = 0; i < n; i++) {
-                a[i] = sc.nextLong();
+                a[i] = scanner.nextLong();
                 totalSum += a[i];
+                prefix[i + 1] = prefix[i] + a[i];
             }
+            
             if (k == 1) {
-                System.out.println(totalSum);
+                out.append(totalSum).append("\n");
                 continue;
             }
-            int len = k - 1;
-            long currentWindowSum = 0;
-            for (int i = 0; i < len; i++) {
-                currentWindowSum += a[i];
-            }
-            long minWindowSum = currentWindowSum;
-            for (int i = len; i < n; i++) {
-                currentWindowSum += a[i] - a[i - len];
-                if (currentWindowSum < minWindowSum) {
-                    minWindowSum = currentWindowSum;
+            int remCount = k - 1;
+            long minRemSum = Long.MAX_VALUE;
+            
+            for (int x = 0; x <= remCount; x++) {
+                int y = remCount - x;
+                long leftSum = prefix[x];
+                long rightSum = prefix[n] - prefix[n - y];
+                long currRemSum = leftSum + rightSum;
+                
+                if (currRemSum < minRemSum) {
+                    minRemSum = currRemSum;
                 }
             }
-            System.out.println(totalSum - minWindowSum);
+            
+            out.append(totalSum - minRemSum).append("\n");
+        }
+        System.out.print(out);
+    }
+
+    static class FastScanner {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        String next() {
+            while (st == null || !st.hasMoreTokens()) {
+                try {
+                    String line = br.readLine();
+                    if (line == null) return null;
+                    st = new StringTokenizer(line);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return st.nextToken();
+        }
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+        long nextLong() {
+            return Long.parseLong(next());
         }
     }
 }
