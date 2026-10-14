@@ -12,7 +12,7 @@ public class minMaxGame_2236 {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
 
-        String next() {
+        String next() {     
             while (st == null || !st.hasMoreElements()) {
                 try {
                     st = new StringTokenizer(br.readLine());

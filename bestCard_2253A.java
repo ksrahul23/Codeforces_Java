@@ -1,18 +1,11 @@
 import java.util.Scanner;
 
-public class Main {
+public class bestCard_2253A {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        // Read the number of test cases
-        if (!scanner.hasNextInt()) return;
         int t = scanner.nextInt();
-        
-        // Process each test case
         while (t-- > 0) {
             int n = scanner.nextInt();
-            
-            // If n + 1 is prime, there is a card that wins against all
             if (isPrime(n + 1)) {
                 System.out.println("YES");
             } else {

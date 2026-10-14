@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class gcdTreasury {
     static long[] sumB = new long[300001];
     static boolean[] reachable = new boolean[300001];
     static int gcd(int a, int b) {

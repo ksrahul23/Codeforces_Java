@@ -1,49 +1,27 @@
-import java.util.Scanner;
-import java.util.HashMap;
-
-public class Main {
+import java.util.*;
+public class mexGame_2271B {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        if (!scanner.hasNextInt()) return;
         int t = scanner.nextInt();
-        
         while (t-- > 0) {
             int n = scanner.nextInt();
             int k = scanner.nextInt();
-            
-            HashMap<Integer, Integer> counts = new HashMap<>();
+            int[] counts = new int[n + 2];
             for (int i = 0; i < n; i++) {
                 int a = scanner.nextInt();
-                counts.put(a, counts.getOrDefault(a, 0) + 1);
-            }
-            
-            int M = 0;
-            boolean aliceWins = false;
-            
-            // Find the first integer M that appears strictly less than 2*k times
-            while (counts.getOrDefault(M, 0) >= 2 * k) {
-                if (counts.get(M) % 2 != 0) {
-                    aliceWins = true;
+                if (a <= n) {
+                    counts[a]++;
                 }
+            }
+            int M = 0;
+            while (counts[M] >= 2 * k) {
                 M++;
             }
-            
-            // If Alice hasn't already won by exploiting an odd frequency smaller than M
-            if (!aliceWins) {
-                int freqM = counts.getOrDefault(M, 0);
-                if (freqM >= k) {
-                    aliceWins = true;
-                }
-            }
-            
-            if (aliceWins) {
+            if (counts[M] == 2 * k - 1) {
                 System.out.println("YES");
             } else {
                 System.out.println("NO");
             }
         }
-        
-        scanner.close();
     }
 }

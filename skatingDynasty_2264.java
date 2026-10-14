@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class skatingDynasty_2264 {
     static final int MOD = 998244353;
     static final int MAX = 200005;
     static long[] inv = new long[MAX];

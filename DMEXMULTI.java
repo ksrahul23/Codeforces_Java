@@ -22,7 +22,7 @@ public class DMEXMULTI {
                 }
             }
 
-            int countZeros = pos[0].size();\
+            int countZeros = pos[0].size();
             if (countZeros == 0) {
                 out.append("YES\n");
                 for (int i = 0; i < n; i++) {

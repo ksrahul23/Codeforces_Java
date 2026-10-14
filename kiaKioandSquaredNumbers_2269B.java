@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class kiaKioandSquaredNumbers_2269B {
     public static int getNext(int x) {
         int sum = 0;
         while (x > 0) {
@@ -16,29 +16,29 @@ public class Main {
         int t = scanner.nextInt();
         while (t-- > 0) {
             int n = scanner.nextInt();
-            int[] lighthouses = new int[n];
+            int[] lh = new int[n];
             
             for (int i = 0; i < n; i++) {
                 int val = scanner.nextInt();
-                for (int day = 0; day < 200; day++) {
+                for (int day = 0; day < 40; day++) {
                     val = getNext(val);
                 }
-                lighthouses[i] = val;
+                lh[i] = val;
             }
-            Arrays.sort(lighthouses);
+            Arrays.sort(lh);
             
-            long totalPairs = 0;
-            long count = 1;
+            long pairs = 0;
+            long c = 1;
             for (int i = 1; i < n; i++) {
-                if (lighthouses[i] == lighthouses[i - 1]) {
-                    count++;
+                if (lh[i] == lh[i - 1]) {
+                    c++;
                 } else {
-                    totalPairs += (count * (count - 1)) / 2;
-                    count = 1;
+                    pairs += (c * (c- 1)) / 2;
+                    c = 1;
                 }
             }
-            totalPairs += (count * (count - 1)) / 2;
-            System.out.println(totalPairs);
+            pairs += (c * (c - 1)) / 2;
+            System.out.println(pairs);
         }
     }
 }

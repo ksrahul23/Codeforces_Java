@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class sausageBank_2269A {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int t = scanner.nextInt();

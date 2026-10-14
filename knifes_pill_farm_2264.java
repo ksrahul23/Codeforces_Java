@@ -1,10 +1,9 @@
 import java.util.*;
 
-public class Main {
+public class knifes_pill_farm_2264 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int testCaseCount = scanner.nextInt();
-
         while (testCaseCount-- > 0) {
             int totalDrafts = scanner.nextInt();
             int requiredPosts = scanner.nextInt();

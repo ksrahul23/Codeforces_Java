@@ -3,7 +3,6 @@ import java.util.*;
 public class fashionableArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
         int t = sc.nextInt();
         while (t-- > 0) {
             int n = sc.nextInt();
@@ -15,7 +14,6 @@ public class fashionableArray {
             }
             ArrayList<Integer> result = new ArrayList<>(n);
             int remaining = n;
-
             while (remaining > 0) {
                 for (int v = 100; v >= 1; v--) {
                     if (count[v] > 0) {
