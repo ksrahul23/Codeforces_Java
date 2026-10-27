@@ -1,38 +1,42 @@
 import java.util.Scanner;
-import java.util.Arrays;
 
-public class Main {
+public class subsetSelecting {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);        
+        int t = scanner.nextInt();
         while (t-- > 0) {
-            int n = sc.nextInt();
-            int k = sc.nextInt();
-            int[] a = new int[n];
-            for (int i = 0; i < n; i++) {
-                a[i] = sc.nextInt();
-            }
-            Arrays.sort(a);
+            int n = scanner.nextInt();
+            int k = scanner.nextInt();
             
-            int[] count = new int[n + 2];
-            for (int x : a) {
-                if (x <= n) {
-                    count[x]++;
+            int[] a = new int[n];
+            int[] cnt = new int[n + 2]; 
+            
+            for (int i = 0; i < n; i++) {
+                a[i] = scanner.nextInt();
+                if (a[i] <= n) {
+                    cnt[a[i]]++;
                 }
             }
             
-            int mex = 0;
-            int availableElements = 0;
-            for (int i = 0; i <= n; i++) {
-                availableElements += count[i];
-                if (availableElements >= k) {
-                    availableElements -= k;
-                    mex = i + 1;
-                } else {
+            int ans = 0;
+            int currentSum = 0;
+            
+            for (int j = 0; j <= n; j++) {
+                if (cnt[j] == 0) {
+                    ans = j;
                     break;
                 }
+                
+                currentSum += cnt[j];
+                if (currentSum < (j + 1) * k) {
+                    ans = j;
+                    break;
+                }
+                
+                ans = j + 1; 
             }
-            System.out.println(mex);
+            
+            System.out.println(ans);
         }
     }
 }
