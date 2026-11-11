@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class 15K4JR3B_2284A2  {
+public class 15K4JR3B_2284A2 {
     static long maxX = 0;
     static long target = 0;
 
@@ -74,6 +74,7 @@ public class 15K4JR3B_2284A2  {
         }
         if (currentSum + suffixSum[idx] <= maxX) return;
         dfs(idx + 1, currentSum + items.get(idx), items, suffixSum);
+        // Try skipping the current item
         dfs(idx + 1, currentSum, items, suffixSum);
     }
 }
